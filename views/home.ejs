@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Secret Club</title>
+  </head>
+  <body>
+    <h3>Hello user <%= user.username %></h3>
+    <h3>Your tier: <%= user.tier %></h3>
+    <div>
+      <a href="/new">Submit a message</a>
+    </div>
+    <div><a href="/logout">Log Out</a></div>
+    <% if (messages.length > 0) { %> <% messages.forEach((message, index) => {
+    %>
+    <h4>Message <%= index + 1 %></h4>
+    <h5>
+      Author: <%= user.tier !== 'standard' ? message.username : 'hidden' %> ||
+      Date: <%= user.tier !== 'standard' ? message.date : 'hidden' %>
+    </h5>
+    <p><%= message.message %></p>
+    <% if (user.tier === 'admin') { %>
+    <form action="/delete" method="post">
+      <input type="hidden" name="msgid" value="<%= message.msgid %>" />
+      <button type="submit">Delete</button>
+    </form>
+    <% } %> <% }) %> <% } %>
+  </body>
+</html>

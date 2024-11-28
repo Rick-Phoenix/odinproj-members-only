@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up</title>
+  </head>
+  <body>
+    <h1>Sign Up</h1>
+    <% if (errors) { %>
+    <ul>
+      <% errors.forEach((error) => { %>
+      <li><%= error.msg %></li>
+      <% }); %>
+    </ul>
+    <% } %>
+    <form action="" method="post">
+      <label for="username">Username: </label>
+      <input type="text" name="username" id="username" required />
+      <label for="password">Password: </label>
+      <input type="password" name="password" id="password" required />
+      <label for="passconfirm">Confirm Password: </label>
+      <input type="password" name="passconfirm" id="passconfirm" required />
+      <label for="secretkey">Secret key: (for elite members only)</label>
+      <input type="text" name="secretkey" id="secretkey" />
+      <button type="submit">Sign Up</button>
+    </form>
+  </body>
+</html>
